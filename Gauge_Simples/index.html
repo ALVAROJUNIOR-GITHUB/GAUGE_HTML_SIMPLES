@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <title>Gauge</title>
+   <script src="gauge.min.js"></script>
+</head>
+
+<body>
+
+<p><font size="50" id="labelTotal" for="exemplo" >Valor Atual:</font></p>
+
+<canvas id='gauge'></canvas>
+
+<script>
+
+var texto = 15;
+    
+var opts = 
+{
+  angle:            0.15, 
+  lineWidth:        0.44, 
+  radiusScale:      1, 
+  angle:            0,
+  pointer:
+  {
+    length:         0.7,
+    strokeWidth:    0.035,
+    color:          '#000000'
+  },
+  limitMax:         false,  
+  limitMin:         false,   
+  colorStart:       '#6FADCF',   
+  colorStop:        '#8FC0DA',  
+  strokeColor:      '#E0E0E0',  
+  generateGradient: true,
+  highDpiSupport:   true,     
+  
+};
+
+
+//======================================================================
+function alteraLabel(texto) 
+{
+   document.getElementById("labelTotal").innerHTML = texto;
+}
+//======================================================================
+    
+var target = document.querySelector('#gauge'); 
+var gauge  = new Gauge(target).setOptions(opts); 
+
+gauge.maxValue = 100;  
+gauge.setMinValue(0);   
+gauge.animationSpeed = 50;  
+gauge.set(72); 
+
+console.log("Valor Atual: " + gauge.value);
+
+texto = gauge.value;
+
+alteraLabel("Valor Atual: " + texto);
+
+</script>
+
+<p>Eng. Álvaro Junior - HTML/JS Gauge Meter</p>
+  
+</body>
+
+</html>
